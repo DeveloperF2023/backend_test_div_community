@@ -58,7 +58,6 @@ class AttendanceController extends Controller
     }
     public function storeMultipleAttendance(Request $request)
     {
-        // You can insert for one or multiple students at once
         $validated = $request->validate([
             'date' => 'required|date',
             'records' => 'required|array',

@@ -56,17 +56,14 @@ class StudentController extends Controller
     {
         $query = Student::query();
 
-        // Filter by gender
         if ($request->has('gender')) {
             $query->where('gender', $request->gender);
         }
 
-        // Filter by level
         if ($request->has('level')) {
             $query->where('level', $request->level);
         }
 
-        // Filter by attendance status
         if ($request->has('attendance_status')) {
             $query->whereHas('attendances', function ($q) use ($request) {
                 $q->where('status', $request->attendance_status);
@@ -81,7 +78,6 @@ class StudentController extends Controller
             });
         }
 
-        // Paginate or get results
         $students = $query->with('classroom')->get();
 
         return response()->json($students);
