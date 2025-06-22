@@ -14,13 +14,11 @@ use Illuminate\Validation\Validator as ValidationValidator;
 
 class AttendanceController extends Controller
 {
-    // Get all attendances
     public function index()
     {
         return response()->json(Attendance::all());
     }
 
-    // Create attendance
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -34,7 +32,6 @@ class AttendanceController extends Controller
         return response()->json($attendance, 201);
     }
 
-    // Update attendance by id
     public function update(Request $request, $id)
     {
         $attendance = Attendance::findOrFail($id);
